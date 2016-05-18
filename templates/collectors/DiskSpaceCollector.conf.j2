@@ -1,0 +1,18 @@
+{% if diamond_collector_DiskSpace_param_measure_collector_time is defined and diamond_collector_DiskSpace_param_measure_collector_time == "enabled" %}
+  {% enabled = True %}
+{% else %}
+  {% enabled = False %}
+{% endif %}
+
+path_suffix =
+ttl_multiplier = 2
+measure_collector_time = {{ diamond_collector_DiskSpace_param_measure_collector_time | False }}
+byte_unit = {{ diamond_collector_DiskSpace_param_byte_unit | byte }}
+
+{% if diamond_collector_DiskSpace_param_exclude_filters is defined %}
+exclude_filters = {{ diamond_collector_DiskSpace_param_exclude_filters }}
+{% endif %}
+
+{% if diamond_collector_DiskSpace_param_filesystems is defined %}
+filesystems = {{ diamond_collector_DiskSpace_param_filesystems }}
+{% endif %}

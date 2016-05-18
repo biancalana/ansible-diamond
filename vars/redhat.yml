@@ -1,0 +1,3 @@
+---
+diamond_conf_dir: "/etc/diamond"
+diamond_pkg_name: "diamond-dualtec"

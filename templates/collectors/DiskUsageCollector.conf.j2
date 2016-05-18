@@ -1,0 +1,16 @@
+{% if diamond_collector_DiskUsage_param_measure_collector_time is defined and diamond_collector_DiskUsage_param_measure_collector_time == "enabled" %}
+  {% enabled = True %}
+{% else %}
+  {% enabled = False %}
+{% endif %}
+
+path_suffix =
+ttl_multiplier = 2
+measure_collector_time = {{ diamond_collector_DiskUsage_param_measure_collector_time | False }}
+byte_unit = {{ diamond_collector_DiskUsage_param_byte_unit | byte }}
+
+measure_collector_time = {{ diamond_collector_DiskUsage_param_send_zero | True }}
+
+{% if diamond_collector_DiskUsage_param_devices is defined %}
+devices = {{ diamond_collector_DiskUsage_param_devices }}
+{% endif %}

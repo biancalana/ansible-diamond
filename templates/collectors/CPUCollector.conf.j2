@@ -1,0 +1,13 @@
+{% if diamond_collector_CPU == "enabled" }
+enabled = True
+{% else %}
+enabled = False
+{% endif %}
+
+path_suffix =
+ttl_multiplier = 2
+measure_collector_time = {{ diamond_collector_CPU_param_measure_collector_time | False }}
+byte_unit = {{ diamond_collector_CPU_param_byte_unit | byte }}
+simple = {{ diamond_collector_CPU_param_simple | True }}
+normalize = {{ diamond_collector_CPU_param_normalize | False }}
+percore = {{ diamond_collector_CPU_param_percore | False }}

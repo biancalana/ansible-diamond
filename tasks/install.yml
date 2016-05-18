@@ -1,0 +1,15 @@
+#########################################################################
+# diamond role - Install and configure diamond metric collector with
+#                 Multi-OS support
+# ------------------------------------------------------------------
+# Written By: Alexandre Biancalana - @biancalana
+# ------------------------------------------------------------------
+# TODO:
+#########################################################################
+
+---
+- name: load OS specific variables
+  include: "{{ item }}"
+  with_first_found:
+   - "install-{{ ansible_distribution | lower}}-{{ansible_distribution_major_version}}.yml"
+   - "install-{{ ansible_distribution }}.yml"
