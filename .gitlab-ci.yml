@@ -1,0 +1,32 @@
+before_script:
+  - python --version
+  - which python
+  - ansible --version
+  # Create ansible.cfg with correct roles_path
+  - printf '[defaults]\nroles_path=../' > ansible.cfg
+
+# required for `ansible-playbook-wrapper`
+variables:
+  PLAYBOOK: tests/test.yml
+  INVENTORY: tests/inventory
+
+.template: &template
+  tags:
+    - ansible
+  script:
+    - ansible-playbook-wrapper --syntax-check
+    - ansible-playbook-wrapper
+    - >
+        ansible-playbook-wrapper
+        | grep -q 'changed=0.*failed=0'
+        && (echo 'Idempotence test: pass' && exit 0)
+        || (echo 'Idempotence test: fail' && exit 1)
+    - cat /tmp/hosts
+    - cat /tmp/something.conf
+
+centos-7:
+  image: williamyeh/ansible:centos7-onbuild
+  script:
+    - ansible-playbook-wrapper --syntax-check
+  tags:
+    - ansible
