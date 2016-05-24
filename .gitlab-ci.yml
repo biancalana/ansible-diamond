@@ -1,6 +1,5 @@
 before_script:
   - python --version
-  - which python
   - ansible --version
   # Create ansible.cfg with correct roles_path
   - printf '[defaults]\nroles_path=../' > ansible.cfg
