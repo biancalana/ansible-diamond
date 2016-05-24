@@ -15,13 +15,13 @@ diamond_default_collectors:
   - VMStat
 
 # GraphiteHandler
-diamond_graphite_host: "d3-zcarbon1.host.intranet"
+diamond_graphite_host: "localhost"
 diamond_graphite_port: 2003
 diamond_graphite_timeout: 15
 diamond_graphite_batch_size: 1
 
 # GraphitePickleHandler
-diamond_graphite_pickle_host: "d3-zcarbon1.host.intranet"
+diamond_graphite_pickle_host: "localhost"
 diamond_graphite_pickle_port: 2004
 diamond_graphite_pickle_timeout: 15
 diamond_graphite_pickle_batch_size: 512
