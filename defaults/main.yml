@@ -1,15 +1,90 @@
 ---
 diamond_conf_dir: "/etc/diamond"
+diamond_collectors_dir: "{{ diamond_conf_dir }}/collectors"
 diamond_pid_dir: "/var/run"
-diamond_pkg_name: "diamond-dualtec"
-diamond_graphite_host: "d3-zcarbon1.host.intranet"
-diamond_graphite_pickle_port: 2004
-diamond_graphite_pickle_batch_size: 512
 diamond_default_interval: 20
+diamond_default_collectors:
+  - CPU
+  - DiskSpace
+  - DiskUsage
+  - LoadAverage
+  - Network
+  - Memory
+  - VMStat
 
-diamond_collector_CPU: enabled
-diamond_collector_DiskSpace: enabled
-diamond_collector_DiskUsage: enabled
-diamond_collector_LoadAverage: enabled
-diamond_collector_Network: enabled
-diamond_collector_VMStat: enabled
+# GraphiteHandler
+diamond_graphite_host: "d3-zcarbon1.host.intranet"
+diamond_graphite_port: 2003
+diamond_graphite_timeout: 15
+diamond_graphite_batch_size: 1
+
+# GraphitePickleHandler
+diamond_graphite_pickle_host: "d3-zcarbon1.host.intranet"
+diamond_graphite_pickle_port: 2004
+diamond_graphite_pickle_timeout: 15
+diamond_graphite_pickle_batch_size: 512
+
+# CPU Collector
+diamond_collector_CPU_path_suffix: "CPUCollector"
+diamond_collector_CPU_ttl_multiplier: 2
+diamond_collector_CPU_measure_collector_time: False
+diamond_collector_CPU_byte_unit: "byte"
+diamond_collector_CPU_simple: True
+diamond_collector_CPU_normalize: False
+diamond_collector_CPU_percore: False
+
+# DiskSpace Collector
+diamond_collector_DiskSpace_byte_unit: "byte"
+diamond_collector_DiskSpace_exclude_filters:
+  - "^/export/home"
+diamond_collector_DiskSpace_filesystems: "xfs"
+diamond_collector_DiskSpace_measure_collector_time: False
+diamond_collector_DiskSpace_path_suffix: "DiskSpaceCollector"
+diamond_collector_DiskSpace_ttl_multiplier: 2
+
+# DiskUsage Collector
+diamond_collector_DiskUsage_byte_unit: "byte"
+diamond_collector_DiskUsage_devices: "PhysicalDrive[0-9]+$|md[0-9]+$|sd[a-z]+[0-9]*$|x?vd[a-z]+[0-9]*$|disk[0-9]+$|dm\\-[0-9]+$"
+diamond_collector_DiskUsage_measure_collector_time: False
+diamond_collector_DiskUsage_metrics_sector_size: 512
+diamond_collector_DiskUsage_metrics_send_zero: False
+diamond_collector_DiskUsage_path_suffix: "DiskUsageCollector"
+diamond_collector_DiskUsage_sector_size: 4096
+diamond_collector_DiskUsage_send_zero: False
+diamond_collector_DiskUsage_ttl_multiplier: 2
+
+# LoadAverage Collector
+diamond_collector_LoadAverage_byte_unit: "byte"
+diamond_collector_LoadAverage_measure_collector_time: False
+diamond_collector_LoadAverage_path_suffix: "LoadAverageCollector"
+diamond_collector_LoadAverage_simple: False
+diamond_collector_LoadAverage_ttl_multiplier: 2
+
+# Network Collector
+diamond_collector_Network_path_suffix: "NetworkCollector"
+diamond_collector_Network_measure_collector_time: False
+diamond_collector_Network_ttl_multiplier: 2
+diamond_collector_Network_byte_unit: "byte"
+diamond_collector_Network_greedy: True
+diamond_collector_Network_interfaces:
+  - eth
+  - bond
+  - em
+  - p1p
+  - eno
+  - enp
+  - ens
+  - enx
+
+# Memory Collector
+diamond_collector_Memory_path_suffix: "MemoryCollector"
+diamond_collector_Memory_measure_collector_time: False
+diamond_collector_Memory_ttl_multiplier: 2
+diamond_collector_Memory_byte_unit: "byte"
+diamond_collector_Memory_detailed: ""
+
+# VMStat Collector
+diamond_collector_VMStat_path_suffix: "VMStatCollector"
+diamond_collector_VMStat_measure_collector_time: False
+diamond_collector_VMStat_ttl_multiplier: 2
+diamond_collector_VMStat_byte_unit: "byte"

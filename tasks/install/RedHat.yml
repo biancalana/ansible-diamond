@@ -1,0 +1,11 @@
+---
+- name: install diamond
+  yum: name={{ diamond_pkg_name }}
+  tags:
+    - diamond
+    - diamond-install
+
+- name: enable diamond service
+  service: name=diamond enabled=yes
+  tags:
+    - diamond

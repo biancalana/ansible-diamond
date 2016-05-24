@@ -26,11 +26,19 @@ collectors_path = /usr/share/diamond/collectors/
 # Directory to load collector configs from
 collectors_config_path = {{ diamond_conf_dir }}/collectors/
 
+# Number of seconds between each collector load
+# collectors_load_delay = 1.0
+
+
 # Directory to load handler configs from
 handlers_config_path = {{ diamond_conf_dir }}/handlers/
 
 # Directory to load handler modules from
 handlers_path = /usr/share/diamond/handlers/
+
+# Maximum number of metrics waiting to be processed by handlers.
+# When metric queue is full, new metrics are dropped.
+metric_queue_size = 16384
 
 ################################################################################
 ### Options for handlers
@@ -42,12 +50,34 @@ keys = rotated_file
 ### Defaults options for all Handlers
 [[default]]
 
+[[ArchiveHandler]]
+
+# File to write archive log files
+log_file = /var/log/diamond/archive.log
+
+# Number of days to keep archive log files
+days = 7
+
+[[GraphiteHandler]]
+### Options for GraphiteHandler
+
+# Graphite server host
+host = {{ diamond_graphite_host }}
+
+# Port to send metrics to
+port = {{ diamond_graphite_port }}
+
+# Socket timeout (seconds)
+timeout = {{ diamond_graphite_timeout }}
+
+# Batch size for metrics
+batch = {{ diamond_graphite_batch_size }}
 
 [[GraphitePickleHandler]]
 ### Options for GraphitePickleHandler
 
 # Graphite server host
-host = {{ diamond_graphite_host }}
+host = {{ diamond_graphite_pickle_host }}
 
 # Port to send metrics to
 port = {{ diamond_graphite_pickle_port }}
@@ -57,9 +87,6 @@ timeout = {{ diamond_graphite_pickle_timeout }}
 
 # Batch size for pickled metrics
 batch = {{ diamond_graphite_pickle_batch_size }}
-
-
-
 
 ################################################################################
 ### Options for collectors

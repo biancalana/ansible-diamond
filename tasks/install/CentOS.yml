@@ -1,0 +1,24 @@
+---
+- name: install diamond dependencies
+  yum: name={{ item }}
+  with_items: "{{ diamond_dependencies }}"
+  tags:
+    - diamond
+    - diamond-install
+
+- name: copy the package rpm
+  copy: src={{ diamond_pkg_name }} dest=/tmp
+  tags:
+    - diamond
+    - diamond-install
+
+- name: install diamond
+  yum: name=/tmp/{{ diamond_pkg_name }}
+  tags:
+    - diamond
+    - diamond-install
+
+- name: enable diamond service
+  service: name=diamond enabled=yes
+  tags:
+    - diamond
