@@ -5,6 +5,7 @@ diamond_pid_dir: "/var/run"
 diamond_default_interval: 20
 diamond_path_prefix: "servers"
 diamond_path_suffix: ""
+diamond_custom_collectors: []
 diamond_default_collectors:
   - CPU
   - DiskSpace

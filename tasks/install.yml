@@ -11,6 +11,7 @@
     dest: "{{ diamond_collectors_dir }}/{{ item }}Collector.conf"
   with_items:
     - "{{ diamond_default_collectors }}"
+    - "{{ diamond_custom_collectors }}"
   notify: restart diamond
 
 - name: enable diamond service
