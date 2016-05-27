@@ -4,8 +4,3 @@
   tags:
     - diamond
     - diamond-install
-
-- name: enable diamond service
-  service: name=diamond enabled=yes
-  tags:
-    - diamond

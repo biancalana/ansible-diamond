@@ -17,4 +17,5 @@
   service: name=diamond enabled=yes
   tags:
     - diamond
+    - diamond-service
     - diamond-install
