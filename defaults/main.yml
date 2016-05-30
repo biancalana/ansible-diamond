@@ -75,6 +75,7 @@ diamond_collector_Network_measure_collector_time: False
 diamond_collector_Network_ttl_multiplier: 2
 diamond_collector_Network_byte_unit: "byte"
 diamond_collector_Network_greedy: True
+diamond_collector_Network_metrics_whitelist: "rx_byte$|rx_drop$|rx_errors$|rx_packets$|tx_byte$|tx_drop$|tx_errors$|tx_packets$"
 diamond_collector_Network_interfaces:
   - eth
   - bond
