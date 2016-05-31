@@ -1,5 +1,9 @@
 #!/usr/bin/env bats
 
+load error
+load output
+load assert
+
 setup() {
   export PLAYBOOK=tests/test.yml
   export INVENTORY=tests/inventory
