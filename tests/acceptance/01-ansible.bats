@@ -10,10 +10,10 @@ setup() {
 }
 
 @test 'run ansible' {
-  run ansible-playbook-wrapper
+  run timeout 30 ansible-playbook-wrapper
 }
 
 @test 'check playbook idempotence' {
-  run ansible-playbook-wrapper
+  run timeout 30 ansible-playbook-wrapper
   echo "$output" | grep -q 'changed=0.*failed=0'
 }
