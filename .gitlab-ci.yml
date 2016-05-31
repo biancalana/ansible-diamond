@@ -9,23 +9,12 @@ variables:
   PLAYBOOK: tests/test.yml
   INVENTORY: tests/inventory
 
-.template: &template
-  tags:
-    - ansible
-  script:
-    - ansible-playbook-wrapper --syntax-check
-    - ansible-playbook-wrapper
-    - >
-        ansible-playbook-wrapper
-        | grep -q 'changed=0.*failed=0'
-        && (echo 'Idempotence test: pass' && exit 0)
-        || (echo 'Idempotence test: fail' && exit 1)
-    - cat /tmp/hosts
-    - cat /tmp/something.conf
-
 centos-7:
   image: williamyeh/ansible:centos7-onbuild
   script:
-    - ansible-playbook-wrapper --syntax-check
+    - curl -sSL -o v0.4.0.tar.gz https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz
+    - tar xzf v0.4.0.tar.gz
+    - ./bats-0.4.0/install.sh /usr/local
+    - /usr/local/bin/bats tests/acceptance/*.bats
   tags:
     - ansible
