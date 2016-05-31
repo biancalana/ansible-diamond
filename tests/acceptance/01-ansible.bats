@@ -6,7 +6,7 @@ setup() {
 }
 
 teardown() {
-  systemctl stop diamond
+  service diamond stop
 }
 
 @test 'check playbook syntax' {
