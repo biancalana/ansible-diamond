@@ -5,14 +5,15 @@ setup() {
   export INVENTORY=tests/inventory
 }
 
-@test 'check playbook syntax' {
-  ansible-playbook-wrapper --syntax-check
+teardown() {
+  systemctl stop diamond
 }
 
-@test 'run ansible' {
-  ansible-playbook-wrapper
+@test 'check playbook syntax' {
+  run ansible-playbook-wrapper --syntax-check
 }
 
 @test 'check playbook idempotence' {
-  ansible-playbook-wrapper | grep -q 'changed=0.*failed=0'
+  run ansible-playbook-wrapper
+  echo "$output" | grep -q 'changed=0.*failed=0'
 }
