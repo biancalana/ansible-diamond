@@ -6,15 +6,13 @@ setup() {
 }
 
 @test 'check playbook syntax' {
-  run ansible-playbook-wrapper --syntax-check
+  ansible-playbook-wrapper --syntax-check
 }
 
 @test 'run ansible' {
-  run ansible-playbook-wrapper
+  ansible-playbook-wrapper
 }
 
 @test 'check playbook idempotence' {
-  skip 'FIXME: the second run never finishes'
-  run ansible-playbook-wrapper
-  echo "$output" | grep -q 'changed=0.*failed=0'
+  ansible-playbook-wrapper | grep -q 'changed=0.*failed=0'
 }
