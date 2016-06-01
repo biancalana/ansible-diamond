@@ -10,14 +10,21 @@ setup() {
 }
 
 teardown() {
-  service diamond stop
+  service diamond stop || echo 'no service here'
 }
 
-@test 'check playbook syntax' {
+@test 'playbook syntax' {
   run ansible-playbook-wrapper --syntax-check
+  assert_success
+}
+
+@test 'check playbook execution' {
+  run ansible-playbook-wrapper
+  assert_success
 }
 
 @test 'check playbook idempotence' {
   run ansible-playbook-wrapper
-  echo "$output" | grep -q 'changed=0.*failed=0'
+  assert_success
+  assert_output -e 'changed=0.*failed=0'
 }

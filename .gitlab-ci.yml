@@ -15,7 +15,6 @@ centos-7:
     - curl -sSL -o v0.4.0.tar.gz https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz
     - tar xzf v0.4.0.tar.gz
     - ./bats-0.4.0/install.sh /usr/local
-    - ansible-playbook-wrapper
     - /usr/local/bin/bats tests/acceptance
   tags:
     - ansible
