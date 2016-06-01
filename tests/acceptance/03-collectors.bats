@@ -18,11 +18,11 @@ setup () {
   run cat $diamond_conf_dir/collectors/CPUCollector.conf
 
   assert_output -p 'enabled = True'
-  assert_output -p 'path_suffix ='
-  assert_output -p 'ttl_multiplier = 2'
-  assert_output -p 'measure_collector_time = False'
-  assert_output -p 'byte_unit = byte'
-  assert_output -p 'simple = True'
-  assert_output -p 'normalize = False'
-  assert_output -p 'percore = False'
+  assert_output -p "path_suffix = $diamond_collector_CPU_path_suffix"
+  assert_output -p "ttl_multiplier = $diamond_collector_CPU_ttl_multiplier"
+  assert_output -p "measure_collector_time = $diamond_collector_CPU_measure_collector_time"
+  assert_output -p "byte_unit = $diamond_collector_CPU_byte_unit"
+  assert_output -p "simple = $diamond_collector_CPU_simple"
+  assert_output -p "normalize = $diamond_collector_CPU_normalize"
+  assert_output -p "percore = $diamond_collector_CPU_percore"
 }
