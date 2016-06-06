@@ -26,3 +26,33 @@ setup () {
   assert_output -p "normalize = $diamond_collector_CPU_normalize"
   assert_output -p "percore = $diamond_collector_CPU_percore"
 }
+
+@test 'DiskSpace Collector' {
+  run cat $diamond_conf_dir/collectors/DiskSpaceCollector.conf
+  assert_success
+}
+
+@test 'DiskUsage Collector' {
+  run cat $diamond_conf_dir/collectors/DiskUsageCollector.conf
+  assert_success
+}
+
+@test 'LoadAverage Collector' {
+  run cat $diamond_conf_dir/collectors/LoadAverageCollector.conf
+  assert_success
+}
+
+@test 'Network Collector' {
+  run cat $diamond_conf_dir/collectors/NetworkCollector.conf
+  assert_success
+}
+
+@test 'Memory Collector' {
+  run cat $diamond_conf_dir/collectors/MemoryCollector.conf
+  assert_success
+}
+
+@test 'VMStat Collector' {
+  run cat $diamond_conf_dir/collectors/VMStatCollector.conf
+  assert_success
+}
