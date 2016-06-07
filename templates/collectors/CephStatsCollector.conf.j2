@@ -1,0 +1,13 @@
+enabled = {{ diamond_collector_CephStats_enabled }}
+path_suffix = {{ diamond_collector_CephStats_path_suffix }}
+ttl_multiplier = {{ diamond_collector_CephStats_ttl_multiplier }}
+byte_unit = {{ diamond_collector_CephStats_byte_unit }}
+measure_collector_time = {{ diamond_collector_CephStats_measure_collector_time }}
+ceph_binary = {{ diamond_collector_CephStats_ceph_binary }}
+socket_ext = {{ diamond_collector_CephStats_socket_ext }}
+socket_path = {{ diamond_collector_CephStats_socket_path }}
+socket_prefix = {{ diamond_collector_CephStats_socket_prefix }}
+
+{% if diamond_collector_CephStats_metrics_whitelist|length %}
+metrics_whitelist = "({{ diamond_collector_CephStats_metrics_whitelist | join('|') }})"
+{% endif %}
