@@ -1,0 +1,21 @@
+enabled = {{ diamond_collector_RabbitMQ_enabled }}
+
+byte_unit = {{ diamond_collector_RabbitMQ_byte_unit }}
+cluster = {{ diamond_collector_RabbitMQ_cluster }}
+host  = {{ diamond_collector_RabbitMQ_host }}
+user = {{ diamond_collector_RabbitMQ_user }}
+password = {{ diamond_collector_RabbitMQ_password }}
+measure_collector_time  = {{ diamond_collector_RabbitMQ_measure_collector_time }}
+queues = {{ diamond_collector_RabbitMQ_queues }}
+queues_ignored = {{ diamond_collector_RabbitMQ_queues_ignored }}
+replace_dot = {{ diamond_collector_RabbitMQ_replace_dot }}
+replace_slash = {{ diamond_collector_RabbitMQ_replace_slash }}
+vhosts = {{ diamond_collector_RabbitMQ_vhosts }}
+
+{% if diamond_collector_RabbitMQ_metrics_blacklist|length %}
+metrics_blacklist = {{ diamond_collector_RabbitMQ_metrics_blacklist }}
+{% endif %}
+
+{% if diamond_collector_RabbitMQ_metrics_whitelist|length %}
+metrics_whitelist = {{ diamond_collector_RabbitMQ_metrics_whitelist }}
+{% endif %}

@@ -1,6 +1,7 @@
 ---
 diamond_instance_prefix: instance.prefix
 diamond_custom_collectors:
+  - RabbitMQ
   - CephStats
   - Ceph
   - LibvirtKVM
