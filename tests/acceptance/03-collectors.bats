@@ -9,11 +9,6 @@ setup () {
   eval $(parse_yaml defaults/main.yml)
 }
 
-@test 'count the collectors' {
-  run echo $(ls $diamond_conf_dir/collectors/*.conf | wc -l)
-  grep Collector ./defaults/main.yml | wc -l | assert_output
-}
-
 @test 'CPU Collector' {
   run cat $diamond_conf_dir/collectors/CPUCollector.conf
 
