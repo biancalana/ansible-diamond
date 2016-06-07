@@ -7,9 +7,6 @@ load assert
 
 setup () {
   eval $(parse_yaml defaults/main.yml)
-
-  # override for tests
-  diamond_conf_dir='/tmp/diamond'
 }
 
 @test 'Ceph Collector' {
