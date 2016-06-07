@@ -1,0 +1,10 @@
+enabled = {{ diamond_collector_Ceph_enabled }}
+path_suffix = {{ diamond_collector_Ceph_path_suffix }}
+ttl_multiplier = {{ diamond_collector_Ceph_ttl_multiplier }}
+byte_unit = {{ diamond_collector_Ceph_byte_unit }}
+measure_collector_time = {{ diamond_collector_Ceph_measure_collector_time }}
+ceph_binary = {{ diamond_collector_Ceph_ceph_binary }}
+socket_ext = {{ diamond_collector_Ceph_socket_ext }}
+socket_path = {{ diamond_collector_Ceph_socket_path }}
+socket_prefix = {{ diamond_collector_Ceph_socket_prefix }}
+metrics_whitelist = "({{ diamond_collector_Ceph_metrics_whitelist | join('|') }})"
