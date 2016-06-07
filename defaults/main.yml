@@ -103,6 +103,7 @@ diamond_collector_VMStat_byte_unit: "byte"
 # Ceph Collector
 diamond_collector_Ceph_enabled: True
 diamond_collector_Ceph_path_suffix: ""
+diamond_collector_Ceph_path: ""
 diamond_collector_Ceph_measure_collector_time: False
 diamond_collector_Ceph_ttl_multiplier: 2
 diamond_collector_Ceph_byte_unit: "byte"

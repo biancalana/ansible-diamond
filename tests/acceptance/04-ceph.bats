@@ -13,6 +13,7 @@ setup () {
   run cat $diamond_conf_dir/collectors/CephCollector.conf
 
   assert_line "enabled = $diamond_collector_Ceph_enabled"
+  assert_line "path = $diamond_collector_Ceph_path"
   assert_line "path_suffix = $diamond_collector_Ceph_path_suffix"
   assert_line "ttl_multiplier = $diamond_collector_Ceph_ttl_multiplier"
   assert_line "measure_collector_time = $diamond_collector_Ceph_measure_collector_time"
