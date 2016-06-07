@@ -30,6 +30,7 @@ setup () {
 
   assert_line "enabled = $diamond_collector_CephStats_enabled"
   assert_line "path_suffix = $diamond_collector_CephStats_path_suffix"
+  assert_line "path = $diamond_collector_CephStats_path"
   assert_line "ttl_multiplier = $diamond_collector_CephStats_ttl_multiplier"
   assert_line "measure_collector_time = $diamond_collector_CephStats_measure_collector_time"
   assert_line "byte_unit = $diamond_collector_CephStats_byte_unit"
