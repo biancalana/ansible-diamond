@@ -10,5 +10,5 @@ socket_path = {{ diamond_collector_Ceph_socket_path }}
 socket_prefix = {{ diamond_collector_Ceph_socket_prefix }}
 
 {% if diamond_collector_Ceph_metrics_whitelist|length %}
-metrics_whitelist = "({{ diamond_collector_Ceph_metrics_whitelist | join('|') }})"
+metrics_whitelist = ".*\.({{ diamond_collector_Ceph_metrics_whitelist | join('|') }})"
 {% endif %}

@@ -22,7 +22,7 @@ setup () {
   assert_line "socket_ext = $diamond_collector_Ceph_socket_ext"
   assert_line "socket_path = $diamond_collector_Ceph_socket_path"
   assert_line "socket_prefix = $diamond_collector_Ceph_socket_prefix"
-  assert_line 'metrics_whitelist = "(filestore.journal_latency|filestore.journal_queue_bytes|filestore.journal_queue_ops|osd.op_latency|osd.op_r|osd.op_w|osd.recovery_ops)"'
+  assert_line 'metrics_whitelist = ".*\.(filestore.journal_latency|filestore.journal_queue_bytes|filestore.journal_queue_ops|osd.op_latency|osd.op_r|osd.op_w|osd.recovery_ops)"'
 }
 
 @test 'CephStats Collector' {
