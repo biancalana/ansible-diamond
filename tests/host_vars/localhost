@@ -1,0 +1,4 @@
+---
+diamond_custom_collectors:
+  - CephStats
+  - Ceph

@@ -27,6 +27,10 @@ diamond_graphite_pickle_port: 2004
 diamond_graphite_pickle_timeout: 15
 diamond_graphite_pickle_batch_size: 512
 
+######################
+# Default Collectors #
+######################
+
 # CPU Collector
 diamond_collector_CPU_path_suffix: ""
 diamond_collector_CPU_ttl_multiplier: 2
@@ -91,3 +95,38 @@ diamond_collector_VMStat_path_suffix: ""
 diamond_collector_VMStat_measure_collector_time: False
 diamond_collector_VMStat_ttl_multiplier: 2
 diamond_collector_VMStat_byte_unit: "byte"
+
+#####################
+# Custom Collectors #
+#####################
+
+# Ceph Collector
+diamond_collector_Ceph_enabled: True
+diamond_collector_Ceph_path_suffix: ""
+diamond_collector_Ceph_measure_collector_time: False
+diamond_collector_Ceph_ttl_multiplier: 2
+diamond_collector_Ceph_byte_unit: "byte"
+diamond_collector_Ceph_ceph_binary: "/usr/bin/ceph"
+diamond_collector_Ceph_socket_ext: "asok"
+diamond_collector_Ceph_socket_path: "/var/run/ceph"
+diamond_collector_Ceph_socket_prefix: "ceph-"
+diamond_collector_Ceph_metrics_whitelist:
+  - filestore.journal_latency
+  - filestore.journal_queue_bytes
+  - filestore.journal_queue_ops
+  - osd.op_latency
+  - osd.op_r
+  - osd.op_w
+  - osd.recovery_ops
+
+# CephStats Collector
+diamond_collector_CephStats_enabled: True
+diamond_collector_CephStats_path_suffix: ""
+diamond_collector_CephStats_measure_collector_time: False
+diamond_collector_CephStats_ttl_multiplier: 2
+diamond_collector_CephStats_byte_unit: "byte"
+diamond_collector_CephStats_ceph_binary: "/usr/bin/ceph"
+diamond_collector_CephStats_socket_ext: "asok"
+diamond_collector_CephStats_socket_path: "/var/run/ceph"
+diamond_collector_CephStats_socket_prefix: "ceph-"
+diamond_collector_CephStats_metrics_whitelist: []

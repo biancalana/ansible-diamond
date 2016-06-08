@@ -17,4 +17,6 @@
 - name: deploy diamond config file
   template: src=diamond.conf.j2 dest={{ diamond_conf_dir }}/diamond.conf mode=0644 owner=root
   notify: restart diamond
-  tags: diamond
+  tags:
+    - diamond
+    - diamond-config

@@ -4,6 +4,9 @@
   with_first_found:
    - "install/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
    - "install/{{ ansible_distribution }}.yml"
+  tags:
+    - diamond
+    - diamond-install
 
 - name: load the default collectors
   template:
@@ -13,6 +16,10 @@
     - "{{ diamond_default_collectors }}"
     - "{{ diamond_custom_collectors }}"
   notify: restart diamond
+  tags:
+    - diamond
+    - diamond-config
+    - diamond-collectors
 
 - name: enable diamond service
   service: name=diamond enabled=yes
