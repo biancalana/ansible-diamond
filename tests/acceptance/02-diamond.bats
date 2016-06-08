@@ -7,6 +7,7 @@ load assert
 
 setup () {
   eval $(parse_yaml defaults/main.yml)
+  eval $(parse_yaml tests/host_vars/localhost)
 }
 
 @test 'check diamond package' {
@@ -25,5 +26,7 @@ setup () {
 }
 
 @test 'check diamond config' {
-  assert [ -e "$diamond_conf_dir/diamond.conf" ]
+  run cat "$diamond_conf_dir/diamond.conf"
+
+  assert_line "instance_prefix = $diamond_instance_prefix"
 }
