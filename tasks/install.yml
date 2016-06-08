@@ -27,3 +27,11 @@
     - diamond
     - diamond-service
     - diamond-install
+
+#
+# XXX: While this patch is not accepted on upstream diamond project
+#
+- name: Install LibvirtKVMCollector-openstack-metadata
+  copy: src=libvirtkvm.py dest={{ diamond_path_collectors }}/libvirtkvm/ mode=0644 owner=root
+  notify: restart diamond
+  tags: diamond
