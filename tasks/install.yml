@@ -34,4 +34,7 @@
 - name: Install LibvirtKVMCollector-openstack-metadata
   copy: src=libvirtkvm.py dest={{ diamond_path_collectors }}/libvirtkvm/ mode=0644 owner=root
   notify: restart diamond
-  tags: diamond
+  tags:
+    - diamond
+    - diamond-install
+    - diamond-install-libvirtkvm
