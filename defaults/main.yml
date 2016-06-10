@@ -1,11 +1,12 @@
 ---
 diamond_conf_dir: "/etc/diamond"
 diamond_collectors_conf_dir: "{{ diamond_conf_dir }}/collectors"
+diamond_collectors_path: "/usr/share/diamond/collectors/"
 diamond_pid_dir: "/var/run"
 diamond_default_interval: 20
 diamond_path_prefix: "servers"
 diamond_path_suffix: ""
-diamond_path_collectors: "/usr/share/diamond/collectors/"
+
 diamond_custom_collectors: []
 diamond_default_collectors:
   - CPU

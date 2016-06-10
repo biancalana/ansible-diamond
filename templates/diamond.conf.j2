@@ -21,7 +21,7 @@ group =
 pid_file = {{ diamond_pid_dir }}/diamond.pid
 
 # Directory to load collector modules from
-collectors_path = /usr/share/diamond/collectors/
+collectors_path = {{ diamond_collectors_path }}
 
 # Directory to load collector configs from
 collectors_config_path = {{ diamond_collectors_conf_dir }}
