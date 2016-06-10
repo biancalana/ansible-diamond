@@ -1,6 +1,6 @@
 ---
 diamond_conf_dir: "/etc/diamond"
-diamond_collectors_dir: "{{ diamond_conf_dir }}/collectors"
+diamond_collectors_conf_dir: "{{ diamond_conf_dir }}/collectors"
 diamond_pid_dir: "/var/run"
 diamond_default_interval: 20
 diamond_path_prefix: "servers"

@@ -11,7 +11,7 @@
 - name: load the default collectors
   template:
     src: "collectors/{{ item }}Collector.conf.j2"
-    dest: "{{ diamond_collectors_dir }}/{{ item }}Collector.conf"
+    dest: "{{ diamond_collectors_conf_dir }}/{{ item }}Collector.conf"
   with_items:
     - "{{ diamond_default_collectors }}"
     - "{{ diamond_custom_collectors }}"
