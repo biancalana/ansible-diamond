@@ -21,10 +21,10 @@ group =
 pid_file = {{ diamond_pid_dir }}/diamond.pid
 
 # Directory to load collector modules from
-collectors_path = /usr/share/diamond/collectors/
+collectors_path = {{ diamond_collectors_path }}
 
 # Directory to load collector configs from
-collectors_config_path = {{ diamond_conf_dir }}/collectors/
+collectors_config_path = {{ diamond_collectors_conf_dir }}
 
 # Number of seconds between each collector load
 # collectors_load_delay = 1.0
@@ -131,7 +131,11 @@ path_suffix = {{ diamond_path_suffix }}
 # VM metrics. Following OpenStack nomenclature, the prefix for
 # reporting per VM metrics is "instances", and metric foo for VM
 # bar will be reported as: instances.bar.foo...
+{% if diamond_instance_prefix %}
+instance_prefix = {{ diamond_instance_prefix }}
+{% else %}
 # instance_prefix = instances
+{% endif %}
 
 # Default Poll Interval (seconds)
 interval = {{ diamond_default_interval }}

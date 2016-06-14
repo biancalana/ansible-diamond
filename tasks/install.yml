@@ -11,7 +11,7 @@
 - name: load the default collectors
   template:
     src: "collectors/{{ item }}Collector.conf.j2"
-    dest: "{{ diamond_collectors_dir }}/{{ item }}Collector.conf"
+    dest: "{{ diamond_collectors_conf_dir }}/{{ item }}Collector.conf"
   with_items:
     - "{{ diamond_default_collectors }}"
     - "{{ diamond_custom_collectors }}"
@@ -27,3 +27,14 @@
     - diamond
     - diamond-service
     - diamond-install
+
+#
+# XXX: While this patch is not accepted on upstream diamond project
+#
+- name: Install LibvirtKVMCollector-openstack-metadata
+  copy: src=libvirtkvm.py dest={{ diamond_collectors_path }}/libvirtkvm/ mode=0644 owner=root
+  notify: restart diamond
+  tags:
+    - diamond
+    - diamond-install
+    - diamond-install-libvirtkvm

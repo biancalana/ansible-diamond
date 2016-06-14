@@ -1,10 +1,13 @@
 ---
 diamond_conf_dir: "/etc/diamond"
-diamond_collectors_dir: "{{ diamond_conf_dir }}/collectors"
+diamond_collectors_conf_dir: "{{ diamond_conf_dir }}/collectors"
+diamond_collectors_path: "/usr/share/diamond/collectors/"
 diamond_pid_dir: "/var/run"
 diamond_default_interval: 20
 diamond_path_prefix: "servers"
 diamond_path_suffix: ""
+diamond_instance_prefix: ""
+
 diamond_custom_collectors: []
 diamond_default_collectors:
   - CPU
@@ -132,3 +135,12 @@ diamond_collector_CephStats_socket_ext: "asok"
 diamond_collector_CephStats_socket_path: "/var/run/ceph"
 diamond_collector_CephStats_socket_prefix: "ceph-"
 diamond_collector_CephStats_metrics_whitelist: []
+
+
+# LibvirtKVM Collector
+diamond_collector_LibvirtKVM_enabled: True
+diamond_collector_LibvirtKVM_path: "."
+diamond_collector_LibvirtKVM_ttl_multiplier: 2
+diamond_collector_LibvirtKVM_measure_collector_time: True
+diamond_collector_LibvirtKVM_byte_unit: "byte"
+diamond_collector_LibvirtKVM_format_name_using_metadata: "${owner_project}_${owner_project_uuid}.${instance}_${instance_uuid}"
