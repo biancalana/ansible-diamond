@@ -188,10 +188,10 @@ as cummulative nanoseconds since VM creation if this is True."""
                     idx = self.blockStats[stat]
                     val = stats[idx]
                     accum[stat] += val
-                    self.publish('block.%s.%s' % (disk, stat), val,
+                    self.publish_counter('block.%s.%s' % (disk, stat), val,
                                  instance=name)
             for stat in self.blockStats.keys():
-                self.publish('block.total.%s' % stat, accum[stat],
+                self.publish_counter('block.total.%s' % stat, accum[stat],
                              instance=name)
 
             # Network stats
@@ -206,10 +206,10 @@ as cummulative nanoseconds since VM creation if this is True."""
                     idx = self.vifStats[stat]
                     val = stats[idx]
                     accum[stat] += val
-                    self.publish('net.%s.%s' % (vif, stat), val,
+                    self.publish_counter('net.%s.%s' % (vif, stat), val,
                                  instance=name)
             for stat in self.vifStats.keys():
-                self.publish('net.total.%s' % stat, accum[stat],
+                self.publish_counter('net.total.%s' % stat, accum[stat],
                              instance=name)
 
             # Memory stats
