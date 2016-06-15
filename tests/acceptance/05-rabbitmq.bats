@@ -24,6 +24,6 @@ setup () {
   assert_line "replace_dot = $diamond_collector_RabbitMQ_replace_dot"
   assert_line "replace_slash = $diamond_collector_RabbitMQ_replace_slash"
   assert_line "vhosts = $diamond_collector_RabbitMQ_vhosts"
-  refute_line 'metrics_whitelist ='
-  refute_line 'metrics_blacklist ='
+  assert_line 'metrics_whitelist = ".*\.(this|is|sparta)"'
+  refute_output -p 'metrics_blacklist ='
 }

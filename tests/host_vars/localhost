@@ -21,3 +21,7 @@ diamond_collector_DiskSpace_filesystems:
   - this
   - is
   - sparta
+diamond_collector_RabbitMQ_metrics_whitelist:
+  - this
+  - is
+  - sparta
