@@ -4,4 +4,4 @@ ttl_multiplier = {{ diamond_collector_DiskSpace_ttl_multiplier }}
 measure_collector_time = {{ diamond_collector_DiskSpace_measure_collector_time }}
 byte_unit = {{ diamond_collector_DiskSpace_byte_unit }}
 exclude_filters = {{ diamond_collector_DiskSpace_exclude_filters | join(", ") }}
-filesystems = {{ diamond_collector_DiskSpace_filesystems }}
+filesystems = {{ diamond_collector_DiskSpace_filesystems | join(", ") }}

@@ -47,7 +47,12 @@ diamond_collector_CPU_percore: False
 diamond_collector_DiskSpace_byte_unit: "byte"
 diamond_collector_DiskSpace_exclude_filters:
   - "^/export/home"
-#diamond_collector_DiskSpace_filesystems: "xfs"
+diamond_collector_DiskSpace_filesystems:
+  - xfs
+  - ext2
+  - ext3
+  - ext4
+  - nfs
 diamond_collector_DiskSpace_measure_collector_time: False
 diamond_collector_DiskSpace_path_suffix: ""
 diamond_collector_DiskSpace_ttl_multiplier: 2

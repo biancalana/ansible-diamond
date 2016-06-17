@@ -6,4 +6,7 @@ measure_collector_time = {{ diamond_collector_DiskUsage_send_zero }}
 devices = {{ diamond_collector_DiskUsage_devices }}
 sector_size = {{ diamond_collector_DiskUsage_metrics_sector_size }}
 send_zero = {{ diamond_collector_DiskUsage_metrics_send_zero }}
-metrics_whitelist = {{ diamond_collector_DiskUsage_metrics_whitelist }}
+
+{% if diamond_collector_DiskUsage_metrics_whitelist|length %}
+metrics_whitelist = ".*\.({{ diamond_collector_DiskUsage_metrics_whitelist | join('|') }})"
+{% endif %}
