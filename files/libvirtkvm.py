@@ -24,6 +24,7 @@ try:
 except ImportError:
     libvirt = None
 
+import re
 
 class LibvirtKVMCollector(diamond.collector.Collector):
     blockStats = {
@@ -76,7 +77,10 @@ class LibvirtKVMCollector(diamond.collector.Collector):
                   'instance_uuid':      instance_uuid}
 
         try:
-            return s.substitute(params)
+            # remove invalid chars for Graphite
+            path = re.sub(r'\s+', '_', s.substitute(params))
+            return re.sub(r'[\(\)\[\]\*]+', '', path)
+
         except KeyError as err:
             self.log.error('invalid format parameter %s' % err)
             return instance
