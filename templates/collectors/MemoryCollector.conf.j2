@@ -6,5 +6,5 @@ measure_collector_time = {{ diamond_collector_Memory_measure_collector_time }}
 detailed = {{ diamond_collector_Memory_detailed }}
 
 {% if diamond_collector_Memory_metrics_whitelist|length %}
-metrics_whitelist = ".*\.({{ diamond_collector_Memory_metrics_whitelist | join('|') }})"
+metrics_whitelist = ".*({{ diamond_collector_Memory_metrics_whitelist | join('|') }})"
 {% endif %}

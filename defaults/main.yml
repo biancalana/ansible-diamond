@@ -67,16 +67,16 @@ diamond_collector_DiskUsage_metrics_send_zero: True
 diamond_collector_DiskUsage_path_suffix: ""
 diamond_collector_DiskUsage_ttl_multiplier: 2
 diamond_collector_DiskUsage_metrics_whitelist:
-  - average_queue_length$
-  - average_request_size_kilobyte$
-  - await$
-  - iops$
-  - read_kilobyte_per_second$
-  - reads_per_second$
-  - service_time$
-  - util_percentage$
-  - write_kilobyte_per_second$
-  - writes_per_second$
+  - average_queue_length
+  - average_request_size_kilobyte
+  - await
+  - iops
+  - read_kilobyte_per_second
+  - reads_per_second
+  - service_time
+  - util_percentage
+  - write_kilobyte_per_second
+  - writes_per_second
 
 # LoadAverage Collector
 diamond_collector_LoadAverage_byte_unit: "byte"
@@ -92,14 +92,14 @@ diamond_collector_Network_ttl_multiplier: 2
 diamond_collector_Network_byte_unit: "byte"
 diamond_collector_Network_greedy: True
 diamond_collector_Network_metrics_whitelist:
-  - rx_byte$
-  - rx_drop$
-  - rx_errors$
-  - rx_packets$
-  - tx_byte$
-  - tx_drop$
-  - tx_errors$
-  - tx_packets$"
+  - rx_byte
+  - rx_drop
+  - rx_errors
+  - rx_packets
+  - tx_byte
+  - tx_drop
+  - tx_errors
+  - tx_packets
 diamond_collector_Network_interfaces:
   - eth
   - bond
@@ -117,12 +117,12 @@ diamond_collector_Memory_ttl_multiplier: 2
 diamond_collector_Memory_byte_unit: "byte"
 diamond_collector_Memory_detailed: ""
 diamond_collector_Memory_metrics_whitelist:
-  - Active$
-  - Buffers$
-  - Cached$
-  - MemTotal$
-  - MemFree$
-  - Committed_AS$
+  - Active
+  - Buffers
+  - Cached
+  - MemTotal
+  - MemFree
+  - Committed_AS
 
 # VMStat Collector
 diamond_collector_VMStat_path_suffix: ""

@@ -8,5 +8,5 @@ sector_size = {{ diamond_collector_DiskUsage_metrics_sector_size }}
 send_zero = {{ diamond_collector_DiskUsage_metrics_send_zero }}
 
 {% if diamond_collector_DiskUsage_metrics_whitelist|length %}
-metrics_whitelist = ".*\.({{ diamond_collector_DiskUsage_metrics_whitelist | join('|') }})"
+metrics_whitelist = ".*\.({{ diamond_collector_DiskUsage_metrics_whitelist | join('|') }})$"
 {% endif %}

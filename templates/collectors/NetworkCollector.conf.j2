@@ -7,5 +7,5 @@ interfaces = {{ diamond_collector_Network_interfaces | join(", ") }}
 greedy = {{ diamond_collector_Network_greedy }}
 
 {% if diamond_collector_Network_metrics_whitelist|length %}
-metrics_whitelist = ".*\.({{ diamond_collector_Network_metrics_whitelist | join('|') }})"
+metrics_whitelist = ".*\.({{ diamond_collector_Network_metrics_whitelist | join('|') }})$"
 {% endif %}
