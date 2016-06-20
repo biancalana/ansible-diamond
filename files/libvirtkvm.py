@@ -27,6 +27,17 @@ except ImportError:
 import re
 
 class LibvirtKVMCollector(diamond.collector.Collector):
+    domStates = {
+        libvirt.VIR_DOMAIN_NOSTATE: "nostate",
+        libvirt.VIR_DOMAIN_RUNNING: "running",
+        libvirt.VIR_DOMAIN_BLOCKED: "blocked",
+        libvirt.VIR_DOMAIN_PAUSED: "paused",
+        libvirt.VIR_DOMAIN_SHUTDOWN: "shutdown",
+        libvirt.VIR_DOMAIN_SHUTOFF: "shutoff",
+        libvirt.VIR_DOMAIN_CRASHED: "crashed",
+        getattr(libvirt, "VIR_DOMAIN_PMSUSPENDED", 7): "pmsuspended"
+    }
+
     blockStats = {
         'read_reqs':   0,
         'read_bytes':  1,
@@ -129,6 +140,9 @@ as cummulative nanoseconds since VM creation if this is True."""
     def get_disk_devices(self, dom):
         return self.get_devices(dom, 'disk')
 
+    def get_dom_state(self, dom):
+        return self.domStates.get(dom.state()[0], libvirt.VIR_DOMAIN_NOSTATE)
+
     def get_network_devices(self, dom):
         return self.get_devices(dom, 'interface')
 
@@ -157,6 +171,9 @@ as cummulative nanoseconds since VM creation if this is True."""
                            self.config['uri'])
             return {}
 
+        host_dom_states = {}
+        host_vcpus_provisioned = 0
+
         for dom in [conn.lookupByID(n) for n in conn.listDomainsID()]:
             if str_to_bool(self.config['sort_by_uuid']):
                 name = dom.UUIDString()
@@ -169,6 +186,16 @@ as cummulative nanoseconds since VM creation if this is True."""
             else:
                 name = dom.name()
 
+            # VM by state
+            if self.config['count_vms_by_state']:
+                dom_state = self.get_dom_state(dom)
+                try:
+                    host_dom_states[dom_state] += 1
+
+                except KeyError:
+                    host_dom_states[dom_state] = 1
+                self.log.error('-> %s' % dom_state)
+
             # CPU stats
             vcpus = dom.getCPUStats(True, 0)
             totalcpu = 0
@@ -180,6 +207,9 @@ as cummulative nanoseconds since VM creation if this is True."""
                 totalcpu += cputime
             self.report_cpu_metric('cpu.total.time', totalcpu, name)
 
+            host_vcpus_provisioned += idx
+
+            #
             # Disk stats
             disks = self.get_disk_devices(dom)
             accum = {}
@@ -221,3 +251,11 @@ as cummulative nanoseconds since VM creation if this is True."""
             self.publish('memory.nominal', mem['actual'] * 1024,
                          instance=name)
             self.publish('memory.rss', mem['rss'] * 1024, instance=name)
+
+        if self.config['count_vms_by_state']:
+            for k, v in host_dom_states.iteritems():
+                if v is not None:
+                    self.publish('vms.%s' % k, v)
+
+        if self.config['count_provisioned_vcpus']:
+            self.publish('vcpus', host_vcpus_provisioned)

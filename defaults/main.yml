@@ -176,3 +176,5 @@ diamond_collector_LibvirtKVM_ttl_multiplier: 2
 diamond_collector_LibvirtKVM_measure_collector_time: True
 diamond_collector_LibvirtKVM_byte_unit: "byte"
 diamond_collector_LibvirtKVM_format_name_using_metadata: "${owner_project}_${owner_project_uuid}.${instance}_${instance_uuid}"
+diamond_collector_LibvirtKVM_count_provisioned_vcpus: True
+diamond_collector_LibvirtKVM_count_vms_by_state: True
