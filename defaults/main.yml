@@ -39,29 +39,44 @@ diamond_collector_CPU_path_suffix: ""
 diamond_collector_CPU_ttl_multiplier: 2
 diamond_collector_CPU_measure_collector_time: False
 diamond_collector_CPU_byte_unit: "byte"
-diamond_collector_CPU_simple: True
-diamond_collector_CPU_normalize: False
+diamond_collector_CPU_simple: False
+diamond_collector_CPU_normalize: True
 diamond_collector_CPU_percore: False
 
 # DiskSpace Collector
 diamond_collector_DiskSpace_byte_unit: "byte"
 diamond_collector_DiskSpace_exclude_filters:
   - "^/export/home"
-diamond_collector_DiskSpace_filesystems: "xfs"
+diamond_collector_DiskSpace_filesystems:
+  - xfs
+  - ext2
+  - ext3
+  - ext4
+  - nfs
 diamond_collector_DiskSpace_measure_collector_time: False
 diamond_collector_DiskSpace_path_suffix: ""
 diamond_collector_DiskSpace_ttl_multiplier: 2
 
+
 # DiskUsage Collector
 diamond_collector_DiskUsage_byte_unit: "byte"
-diamond_collector_DiskUsage_devices: "PhysicalDrive[0-9]+$|md[0-9]+$|sd[a-z]+[0-9]*$|x?vd[a-z]+[0-9]*$|disk[0-9]+$|dm\\-[0-9]+$"
+diamond_collector_DiskUsage_devices: "PhysicalDrive[0-9]+$|md[0-9]+$|sd[a-z]+[0-9]*$|x?vd[a-z]+[0-9]*$|disk[0-9]+$"
 diamond_collector_DiskUsage_measure_collector_time: False
 diamond_collector_DiskUsage_metrics_sector_size: 512
-diamond_collector_DiskUsage_metrics_send_zero: False
+diamond_collector_DiskUsage_metrics_send_zero: True
 diamond_collector_DiskUsage_path_suffix: ""
-diamond_collector_DiskUsage_sector_size: 4096
-diamond_collector_DiskUsage_send_zero: False
 diamond_collector_DiskUsage_ttl_multiplier: 2
+diamond_collector_DiskUsage_metrics_whitelist:
+  - average_queue_length
+  - average_request_size_kilobyte
+  - await
+  - iops
+  - read_kilobyte_per_second
+  - reads_per_second
+  - service_time
+  - util_percentage
+  - write_kilobyte_per_second
+  - writes_per_second
 
 # LoadAverage Collector
 diamond_collector_LoadAverage_byte_unit: "byte"
@@ -76,6 +91,15 @@ diamond_collector_Network_measure_collector_time: False
 diamond_collector_Network_ttl_multiplier: 2
 diamond_collector_Network_byte_unit: "byte"
 diamond_collector_Network_greedy: True
+diamond_collector_Network_metrics_whitelist:
+  - rx_byte
+  - rx_drop
+  - rx_errors
+  - rx_packets
+  - tx_byte
+  - tx_drop
+  - tx_errors
+  - tx_packets
 diamond_collector_Network_interfaces:
   - eth
   - bond
@@ -92,6 +116,14 @@ diamond_collector_Memory_measure_collector_time: False
 diamond_collector_Memory_ttl_multiplier: 2
 diamond_collector_Memory_byte_unit: "byte"
 diamond_collector_Memory_detailed: ""
+diamond_collector_Memory_metrics_whitelist:
+  - Active
+  - Buffers
+  - Cached
+  - MemAvailable
+  - MemTotal
+  - MemFree
+  - Committed_AS
 
 # VMStat Collector
 diamond_collector_VMStat_path_suffix: ""

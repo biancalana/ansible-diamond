@@ -4,3 +4,7 @@ ttl_multiplier = {{ diamond_collector_Memory_ttl_multiplier }}
 byte_unit = {{ diamond_collector_Memory_byte_unit }}
 measure_collector_time = {{ diamond_collector_Memory_measure_collector_time }}
 detailed = {{ diamond_collector_Memory_detailed }}
+
+{% if diamond_collector_Memory_metrics_whitelist|length %}
+metrics_whitelist = ".*({{ diamond_collector_Memory_metrics_whitelist | join('|') }})"
+{% endif %}

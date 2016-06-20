@@ -4,3 +4,19 @@ diamond_custom_collectors:
   - CephStats
   - Ceph
   - LibvirtKVM
+diamond_collector_Memory_metrics_whitelist:
+  - this
+  - is
+  - sparta
+diamond_collector_Network_metrics_whitelist:
+  - this
+  - is
+  - sparta
+diamond_collector_DiskUsage_metrics_whitelist:
+  - this
+  - is
+  - sparta
+diamond_collector_DiskSpace_filesystems:
+  - this
+  - is
+  - sparta

@@ -5,3 +5,7 @@ byte_unit = {{ diamond_collector_Network_byte_unit }}
 measure_collector_time = {{ diamond_collector_Network_measure_collector_time }}
 interfaces = {{ diamond_collector_Network_interfaces | join(", ") }}
 greedy = {{ diamond_collector_Network_greedy }}
+
+{% if diamond_collector_Network_metrics_whitelist|length %}
+metrics_whitelist = ".*\.({{ diamond_collector_Network_metrics_whitelist | join('|') }})$"
+{% endif %}

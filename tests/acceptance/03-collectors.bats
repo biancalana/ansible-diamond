@@ -24,12 +24,12 @@ setup () {
 
 @test 'DiskSpace Collector' {
   run cat $diamond_conf_dir/collectors/DiskSpaceCollector.conf
-  assert_success
+  assert_line 'filesystems = this, is, sparta'
 }
 
 @test 'DiskUsage Collector' {
   run cat $diamond_conf_dir/collectors/DiskUsageCollector.conf
-  assert_success
+  assert_line 'metrics_whitelist = ".*\.(this|is|sparta)$"'
 }
 
 @test 'LoadAverage Collector' {
@@ -39,12 +39,12 @@ setup () {
 
 @test 'Network Collector' {
   run cat $diamond_conf_dir/collectors/NetworkCollector.conf
-  assert_success
+  assert_line 'metrics_whitelist = ".*\.(this|is|sparta)$"'
 }
 
 @test 'Memory Collector' {
   run cat $diamond_conf_dir/collectors/MemoryCollector.conf
-  assert_success
+  assert_line 'metrics_whitelist = ".*(this|is|sparta)"'
 }
 
 @test 'VMStat Collector' {
