@@ -29,7 +29,7 @@ setup () {
 
 @test 'DiskUsage Collector' {
   run cat $diamond_conf_dir/collectors/DiskUsageCollector.conf
-  assert_line 'metrics_whitelist = ".*\.(this|is|sparta)"'
+  assert_line 'metrics_whitelist = ".*\.(this|is|sparta)$"'
 }
 
 @test 'LoadAverage Collector' {
@@ -39,12 +39,12 @@ setup () {
 
 @test 'Network Collector' {
   run cat $diamond_conf_dir/collectors/NetworkCollector.conf
-  assert_line 'metrics_whitelist = ".*\.(this|is|sparta)"'
+  assert_line 'metrics_whitelist = ".*\.(this|is|sparta)$"'
 }
 
 @test 'Memory Collector' {
   run cat $diamond_conf_dir/collectors/MemoryCollector.conf
-  assert_line 'metrics_whitelist = ".*\.(this|is|sparta)"'
+  assert_line 'metrics_whitelist = ".*(this|is|sparta)"'
 }
 
 @test 'VMStat Collector' {
