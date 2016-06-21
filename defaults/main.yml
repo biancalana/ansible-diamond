@@ -9,6 +9,9 @@ diamond_path_suffix: ""
 diamond_instance_prefix: ""
 
 diamond_custom_collectors: []
+  # Ceph
+  # CephStats
+  # RabbitMQ
 diamond_default_collectors:
   - CPU
   - DiskSpace
@@ -168,7 +171,6 @@ diamond_collector_CephStats_socket_path: "/var/run/ceph"
 diamond_collector_CephStats_socket_prefix: "ceph-"
 diamond_collector_CephStats_metrics_whitelist: []
 
-
 # LibvirtKVM Collector
 diamond_collector_LibvirtKVM_enabled: True
 diamond_collector_LibvirtKVM_path: "."
@@ -178,3 +180,19 @@ diamond_collector_LibvirtKVM_byte_unit: "byte"
 diamond_collector_LibvirtKVM_format_name_using_metadata: "${owner_project}_${owner_project_uuid}.${instance}_${instance_uuid}"
 diamond_collector_LibvirtKVM_count_provisioned_vcpus: True
 diamond_collector_LibvirtKVM_count_vms_by_state: True
+
+# RabbitMQ Collector
+diamond_collector_RabbitMQ_enabled: True
+diamond_collector_RabbitMQ_byte_unit: "byte"
+diamond_collector_RabbitMQ_cluster: False
+diamond_collector_RabbitMQ_host: "localhost:5672"
+diamond_collector_RabbitMQ_user: "guest"
+diamond_collector_RabbitMQ_password: "guest"
+diamond_collector_RabbitMQ_measure_collector_time: False
+diamond_collector_RabbitMQ_metrics_blacklist: []
+diamond_collector_RabbitMQ_metrics_whitelist: []
+diamond_collector_RabbitMQ_queues: ""
+diamond_collector_RabbitMQ_queues_ignored: ""
+diamond_collector_RabbitMQ_replace_dot: False
+diamond_collector_RabbitMQ_replace_slash: False
+diamond_collector_RabbitMQ_vhosts: ""

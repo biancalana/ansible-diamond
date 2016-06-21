@@ -1,6 +1,7 @@
 ---
 diamond_instance_prefix: instance.prefix
 diamond_custom_collectors:
+  - RabbitMQ
   - CephStats
   - Ceph
   - LibvirtKVM
@@ -17,6 +18,10 @@ diamond_collector_DiskUsage_metrics_whitelist:
   - is
   - sparta
 diamond_collector_DiskSpace_filesystems:
+  - this
+  - is
+  - sparta
+diamond_collector_RabbitMQ_metrics_whitelist:
   - this
   - is
   - sparta
