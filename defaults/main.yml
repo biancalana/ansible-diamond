@@ -7,11 +7,12 @@ diamond_default_interval: 20
 diamond_path_prefix: "servers"
 diamond_path_suffix: ""
 diamond_instance_prefix: ""
-
 diamond_custom_collectors: []
   # Ceph
   # CephStats
+  # LibvirtKVM
   # RabbitMQ
+  # Httpd
 diamond_default_collectors:
   - CPU
   - DiskSpace
@@ -202,3 +203,11 @@ diamond_collector_RabbitMQ_queues_ignored: ""
 diamond_collector_RabbitMQ_replace_dot: False
 diamond_collector_RabbitMQ_replace_slash: False
 diamond_collector_RabbitMQ_vhosts: ""
+
+# Httpd Collector
+diamond_collector_Httpd_enabled: True
+diamond_collector_Httpd_byte_unit: "byte"
+diamond_collector_Httpd_measure_collector_time: False
+diamond_collector_Httpd_metrics_blacklist: []
+diamond_collector_Httpd_metrics_whitelist: []
+diamond_collector_Httpd_urls: []

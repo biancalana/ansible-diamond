@@ -1,0 +1,15 @@
+enabled = True
+byte_unit = {{ diamond_collector_Httpd_byte_unit }}
+measure_collector_time = {{ diamond_collector_Httpd_measure_collector_time }}
+
+{% if diamond_collector_Httpd_urls|length %}
+urls = "{{ diamond_collector_Httpd_urls | join(', ') }}"
+{% endif %}
+
+{% if diamond_collector_Httpd_metrics_blacklist|length %}
+metrics_blacklist = ".*\.({{ diamond_collector_Httpd_metrics_blacklist | join('|') }})"
+{% endif %}
+
+{% if diamond_collector_Httpd_metrics_whitelist|length %}
+metrics_whitelist = ".*\.({{ diamond_collector_Httpd_metrics_whitelist | join('|') }})"
+{% endif %}
