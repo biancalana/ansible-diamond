@@ -11,6 +11,7 @@ diamond_custom_collectors:
   - Ceph
   - LibvirtKVM
   - KSM
+  - Httpd
 
 diamond_collector_Memory_metrics_whitelist: *whitelist
 diamond_collector_Network_metrics_whitelist: *whitelist
@@ -18,3 +19,8 @@ diamond_collector_DiskUsage_metrics_whitelist: *whitelist
 diamond_collector_DiskSpace_filesystems: *whitelist
 diamond_collector_RabbitMQ_metrics_whitelist: *whitelist
 diamond_collector_KSM_metrics_whitelist: *whitelist
+diamond_collector_Httpd_metrics_whitelist: *whitelist
+
+diamond_collector_Httpd_urls:
+  - localhost
+  - otherhost
