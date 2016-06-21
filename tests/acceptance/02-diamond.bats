@@ -11,15 +11,16 @@ setup () {
 }
 
 @test 'check diamond package' {
-  run rpm -q diamond-dualtec
-  assert_success
+  run diamond --version
+  assert_output -p 'Diamond version 4'
 }
 
 @test 'check diamond service' {
   run systemctl status diamond
 
   # FIXME: skip until we can make systemctl run on Docker
-  assert_output -p 'Failed to get D-Bus connection' && \
+  assert_output -p 'Failed to get D-Bus connection' || \
+  assert_output -p 'systemctl: command not found'   && \
     skip 'systemctl not working in docker'
 
   assert_output 'system statistics collector for graphite'
