@@ -171,6 +171,12 @@ diamond_collector_CephStats_socket_path: "/var/run/ceph"
 diamond_collector_CephStats_socket_prefix: "ceph-"
 diamond_collector_CephStats_metrics_whitelist: []
 
+# KSM Collector
+diamond_collector_KSM_enabled: True
+diamond_collector_KSM_measure_collector_time: False
+diamond_collector_KSM_byte_unit: "byte"
+diamond_collector_KSM_metrics_whitelist: []
+
 # LibvirtKVM Collector
 diamond_collector_LibvirtKVM_enabled: True
 diamond_collector_LibvirtKVM_path: "."
