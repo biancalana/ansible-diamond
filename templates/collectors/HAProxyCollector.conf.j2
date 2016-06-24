@@ -1,0 +1,17 @@
+enabled = {{ diamond_collector_HAProxy_enabled }}
+byte_unit = {{ diamond_collector_HAProxy_byte_unit }}
+measure_collector_time = {{ diamond_collector_HAProxy_measure_collector_time }}
+ignore_servers = {{ diamond_collector_HAProxy_ignore_servers }}
+method = {{ diamond_collector_HAProxy_method }}
+pass = {{ diamond_collector_HAProxy_pass }}
+sock = {{ diamond_collector_HAProxy_sock }}
+url = {{ diamond_collector_HAProxy_url }}
+user = {{ diamond_collector_HAProxy_user }}
+
+{% if diamond_collector_HAProxy_metrics_blacklist|length %}
+metrics_blacklist = ".*\.({{ diamond_collector_HAProxy_metrics_blacklist | join('|') }})"
+{% endif %}
+
+{% if diamond_collector_HAProxy_metrics_whitelist|length %}
+metrics_whitelist = ".*\.({{ diamond_collector_HAProxy_metrics_whitelist | join('|') }})"
+{% endif %}

@@ -211,3 +211,16 @@ diamond_collector_Httpd_measure_collector_time: False
 diamond_collector_Httpd_metrics_blacklist: []
 diamond_collector_Httpd_metrics_whitelist: []
 diamond_collector_Httpd_urls: []
+
+# HAProxy Collector
+diamond_collector_HAProxy_enabled: True
+diamond_collector_HAProxy_byte_unit: "byte"
+diamond_collector_HAProxy_ignore_servers: False
+diamond_collector_HAProxy_measure_collector_time: False
+diamond_collector_HAProxy_metrics_blacklist: []
+diamond_collector_HAProxy_metrics_whitelist: []
+diamond_collector_HAProxy_method: "http"
+diamond_collector_HAProxy_pass: "password"
+diamond_collector_HAProxy_sock: "/var/run/haproxy.sock"
+diamond_collector_HAProxy_url: "http://localhost/haproxy?stats;csv"
+diamond_collector_HAProxy_user: "admin"
