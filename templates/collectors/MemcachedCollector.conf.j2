@@ -1,0 +1,14 @@
+enabled = {{ diamond_collector_Memcached_enabled }}
+
+byte_unit = {{ diamond_collector_Memcached_byte_unit }}
+measure_collector_time = {{ diamond_collector_Memcached_measure_collector_time }}
+hosts = {{ diamond_collector_Memcached_hosts }}
+publish = {{ diamond_collector_Memcached_publish }}
+
+{% if diamond_collector_Memcached_metrics_blacklist|length %}
+metrics_blacklist = ".*\.({{ diamond_collector_Memcached_metrics_blacklist | join('|') }})"
+{% endif %}
+
+{% if diamond_collector_Memcached_metrics_whitelist|length %}
+metrics_whitelist = ".*\.({{ diamond_collector_Memcached_metrics_whitelist | join('|') }})"
+{% endif %}

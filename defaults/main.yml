@@ -188,6 +188,15 @@ diamond_collector_LibvirtKVM_format_name_using_metadata: "${owner_project}_${own
 diamond_collector_LibvirtKVM_count_provisioned_vcpus: True
 diamond_collector_LibvirtKVM_count_vms_by_state: True
 
+# Memcached Collector
+diamond_collector_Memcached_enabled: True
+diamond_collector_Memcached_byte_unit: "byte"
+diamond_collector_Memcached_measure_collector_time: False
+diamond_collector_Memcached_metrics_blacklist: []
+diamond_collector_Memcached_metrics_whitelist: []
+diamond_collector_Memcached_hosts: "localhost:11211"
+diamond_collector_Memcached_publish: ""
+
 # RabbitMQ Collector
 diamond_collector_RabbitMQ_enabled: True
 diamond_collector_RabbitMQ_byte_unit: "byte"
