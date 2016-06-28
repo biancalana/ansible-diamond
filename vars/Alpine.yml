@@ -1,0 +1,10 @@
+---
+diamond_pkg_name: diamond
+diamond_service_dir: /etc/init.d/
+diamond_dependencies:
+  - gcc
+  - py-pip
+  - python-dev
+  - libc-dev
+  - linux-headers
+  - openrc

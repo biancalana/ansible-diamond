@@ -1,3 +1,4 @@
 ---
 - name: restart diamond
   service: name=diamond state=restarted
+  when: ansible_distribution != "Alpine"

@@ -21,3 +21,16 @@ centos-7:
     - /usr/local/bin/bats tests/acceptance
   tags:
     - ansible
+
+alpine-3:
+  image: williamyeh/ansible:alpine3-onbuild
+  script:
+    - apk add --update-cache curl bash
+    - curl -sSL -o v0.4.0.tar.gz https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz
+    - tar xzf v0.4.0.tar.gz
+    - ./bats-0.4.0/install.sh /usr/local
+    - /usr/local/bin/bats tests/acceptance
+  only:
+    - master
+  tags:
+    - ansible
