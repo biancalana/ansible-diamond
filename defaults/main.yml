@@ -213,6 +213,20 @@ diamond_collector_RabbitMQ_replace_dot: False
 diamond_collector_RabbitMQ_replace_slash: False
 diamond_collector_RabbitMQ_vhosts: ""
 
+# Redis Collector
+diamond_collector_Redis_enabled: True
+diamond_collector_Redis_byte_unit: "byte"
+diamond_collector_Redis_measure_collector_time: False
+diamond_collector_Redis_metrics_blacklist: []
+diamond_collector_Redis_metrics_whitelist: []
+diamond_collector_Redis_auth: ""
+diamond_collector_Redis_databases: 16
+diamond_collector_Redis_db: 0
+diamond_collector_Redis_host: "localhost"
+diamond_collector_Redis_instances: []
+diamond_collector_Redis_port: 6379
+diamond_collector_Redis_timeout: 5
+
 # Httpd Collector
 diamond_collector_Httpd_enabled: True
 diamond_collector_Httpd_byte_unit: "byte"
