@@ -1,0 +1,22 @@
+enabled = {{ diamond_collector_Redis_enabled }}
+
+byte_unit = {{ diamond_collector_Redis_byte_unit }}
+measure_collector_time = {{ diamond_collector_Redis_measure_collector_time }}
+auth = {{ diamond_collector_Redis_auth }}
+databases = {{ diamond_collector_Redis_databases }}
+db = {{ diamond_collector_Redis_db }}
+host = {{ diamond_collector_Redis_host }}
+port = {{ diamond_collector_Redis_port }}
+timeout = {{ diamond_collector_Redis_timeout }}
+
+{% if diamond_collector_Redis_instances|length %}
+instances = {{ diamond_collector_Redis_instances | join(', ') }}
+{% endif %}
+
+{% if diamond_collector_Redis_metrics_blacklist|length %}
+metrics_blacklist = ".*\.({{ diamond_collector_Redis_metrics_blacklist | join('|') }})"
+{% endif %}
+
+{% if diamond_collector_Redis_metrics_whitelist|length %}
+metrics_whitelist = ".*\.({{ diamond_collector_Redis_metrics_whitelist | join('|') }})"
+{% endif %}

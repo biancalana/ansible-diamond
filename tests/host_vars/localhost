@@ -14,6 +14,7 @@ diamond_custom_collectors:
   - Httpd
   - HAProxy
   - Memcached
+  - Redis
 
 diamond_collector_Memory_metrics_whitelist: *whitelist
 diamond_collector_Network_metrics_whitelist: *whitelist
@@ -24,6 +25,12 @@ diamond_collector_KSM_metrics_whitelist: *whitelist
 diamond_collector_Httpd_metrics_whitelist: *whitelist
 diamond_collector_HAProxy_metrics_whitelist: *whitelist
 diamond_collector_Memcached_metrics_whitelist: *whitelist
+diamond_collector_Redis_metrics_whitelist: *whitelist
+
+diamond_collector_Redis_instances:
+  - nick1@host:port
+  - nick2@:port
+  - nick3@host
 
 diamond_collector_Httpd_urls:
   - localhost
