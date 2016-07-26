@@ -11,25 +11,21 @@ variables:
   PLAYBOOK: tests/test.yml
   INVENTORY: tests/inventory
 
+cache:
+  key: "$CI_PROJECT_NAME-$CI_BUILD_NAME-cache"
+  paths:
+    - tests/bats-0.4.0
+    - deps
+
 centos-7:
   image: williamyeh/ansible:centos7-onbuild
-  script:
-    - ansible-playbook-wrapper
-    - curl -sSL -o v0.4.0.tar.gz https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz
-    - tar xzf v0.4.0.tar.gz
-    - ./bats-0.4.0/install.sh /usr/local
-    - /usr/local/bin/bats tests/acceptance
+  script: ./tests/ci-build
   tags:
     - ansible
 
 alpine-3:
   image: williamyeh/ansible:alpine3-onbuild
-  script:
-    - apk add --update-cache curl bash
-    - curl -sSL -o v0.4.0.tar.gz https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz
-    - tar xzf v0.4.0.tar.gz
-    - ./bats-0.4.0/install.sh /usr/local
-    - /usr/local/bin/bats tests/acceptance
+  script: ./tests/ci-build
   only:
     - master
   tags:
