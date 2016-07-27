@@ -31,6 +31,17 @@
 #
 # XXX: While this patch is not accepted on upstream diamond project
 #
+- name: Install modified DiskUsageCollector
+  copy: src=diskusage.py dest={{ diamond_collectors_path }}/diskusage/ mode=0644 owner=root
+  when: '"diskusage-label" in diamond_custom_collectors'
+  notify: restart diamond
+  tags:
+    - diamond
+    - diamond-install
+
+#
+# XXX: While this patch is not accepted on upstream diamond project
+#
 - name: Install LibvirtKVMCollector-openstack-metadata
   copy: src=libvirtkvm.py dest={{ diamond_collectors_path }}/libvirtkvm/ mode=0644 owner=root
   when: '"LibvirtKVM" in diamond_custom_collectors'
