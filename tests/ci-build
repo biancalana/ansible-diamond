@@ -1,0 +1,35 @@
+#!/bin/sh
+
+bats=./tests/bats-0.4.0
+package=./deps/bats.tar.gz
+
+if [ -f /etc/centos-release ]; then
+  if [ ! -d ./deps ]; then
+    mkdir deps
+    echo 'Dependencies not found, downloading...'
+    yum install --downloadonly --downloaddir ./deps -y -q python-configobj
+  fi
+
+  echo 'Installing dependencies...'
+  yum install -y -q deps/*.rpm
+fi
+
+if [ -f /etc/alpine-release ]; then
+  if [ ! -d ./deps ]; then
+    echo 'Dependencies not found, downloading...'
+    mkdir deps
+    apk -U fetch -qR --no-progress -o ./deps bash curl
+  fi
+
+  echo 'Installing dependencies...'
+  apk add -q deps/*.apk
+fi
+
+if [ ! -d $bats ]; then
+  echo 'Bats not found, downloading and extracting...'
+  [[ -f $package ]] || curl -sSL -o $package https://github.com/sstephenson/bats/archive/v0.4.0.tar.gz
+  tar xzf $package -C tests/
+fi
+
+# run the tests
+$bats/bin/bats tests/acceptance
