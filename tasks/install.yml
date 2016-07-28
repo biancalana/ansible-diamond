@@ -33,7 +33,7 @@
 #
 - name: Install modified DiskUsageCollector
   copy: src=diskusage.py dest={{ diamond_collectors_path }}/diskusage/ mode=0644 owner=root
-  when: '"diskusage-label" in diamond_custom_collectors'
+  when: diamond_collector_DiskUsage_attach_device_label
   notify: restart diamond
   tags:
     - diamond
