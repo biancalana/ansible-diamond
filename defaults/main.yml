@@ -70,9 +70,10 @@ diamond_collector_DiskUsage_metrics_sector_size: 512
 diamond_collector_DiskUsage_metrics_send_zero: True
 diamond_collector_DiskUsage_path_suffix: ""
 diamond_collector_DiskUsage_ttl_multiplier: 2
+diamond_collector_DiskUsage_attach_device_label: False
 diamond_collector_DiskUsage_metrics_whitelist:
   - average_queue_length
-  - average_request_size_kilobyte
+  - average_request_size_byte
   - await
   - iops
   - read_kilobyte_per_second
