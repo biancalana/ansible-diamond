@@ -27,6 +27,8 @@ diamond_collector_HAProxy_metrics_whitelist: *whitelist
 diamond_collector_Memcached_metrics_whitelist: *whitelist
 diamond_collector_Redis_metrics_whitelist: *whitelist
 
+diamond_collector_DiskUsage_attach_device_label: True
+
 diamond_collector_Redis_instances:
   - nick1@host:port
   - nick2@:port
