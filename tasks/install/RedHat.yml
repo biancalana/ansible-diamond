@@ -1,6 +1,12 @@
 ---
+- name: copy the package rpm
+  copy: src={{ diamond_pkg_name }} dest=/tmp
+  tags:
+    - diamond
+    - diamond-install
+
 - name: install diamond
-  yum: name={{ diamond_pkg_name }}
+  yum: name=/tmp/{{ diamond_pkg_name }}
   tags:
     - diamond
     - diamond-install

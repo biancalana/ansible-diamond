@@ -1,3 +1,2 @@
 ---
-diamond_conf_dir: "/etc/diamond"
-diamond_pkg_name: "diamond-dualtec"
+diamond_pkg_name: "diamond-4.0.455-0.noarch.rpm"
