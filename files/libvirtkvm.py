@@ -194,7 +194,7 @@ as cummulative nanoseconds since VM creation if this is True."""
 
                 except KeyError:
                     host_dom_states[dom_state] = 1
-                self.log.error('-> %s' % dom_state)
+                self.log.debug('%s -> %s' % (name, dom_state))
 
             # CPU stats
             vcpus = dom.getCPUStats(True, 0)
@@ -202,12 +202,17 @@ as cummulative nanoseconds since VM creation if this is True."""
             idx = 0
             for vcpu in vcpus:
                 cputime = vcpu['cpu_time']
-                self.report_cpu_metric('cpu.%s.time' % idx, cputime, name)
                 idx += 1
                 totalcpu += cputime
-            self.report_cpu_metric('cpu.total.time', totalcpu, name)
+                self.report_cpu_metric('cpu.%s.time' % idx, cputime, name)
 
-            host_vcpus_provisioned += idx
+            vcpus = dom.vcpusFlags(libvirt.VIR_DOMAIN_AFFECT_CONFIG)
+            self.report_cpu_metric('cpu.total.time', totalcpu, name)
+            self.publish('cpu.count', vcpus, instance=name)
+
+            host_vcpus_provisioned += vcpus
+
+            self.log.debug('%s -> instance vcpus(%d) host_vcpus_provisioned(%d)' % (name, vcpus, host_vcpus_provisioned))
 
             #
             # Disk stats
