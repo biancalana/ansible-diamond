@@ -21,6 +21,15 @@
     - diamond-config
     - diamond-collectors
 
+- name: disable stdout logging
+  lineinfile: dest=/lib/systemd/system/diamond.service regexp='^(ExecStart=.*) --log-stdout(.*)$' line='\1\2' backrefs=yes backup=yes
+  register: diamond_systemd
+
+- name: reload systemd
+  command: systemctl daemon-reload
+  when: diamond_systemd|changed
+  notify: restart diamond
+
 - name: enable diamond service
   service: name=diamond enabled=yes
   tags:
