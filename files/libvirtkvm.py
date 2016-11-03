@@ -203,7 +203,8 @@ as cummulative nanoseconds since VM creation if this is True."""
                 cputime = vcpu['cpu_time']
                 idx += 1
                 totalcpu += cputime
-                self.report_cpu_metric('cpu.%s.time' % idx, cputime, name)
+                # do not report individual vcpu time for now...
+                #self.report_cpu_metric('cpu.%s.time' % idx, cputime, name)
 
             vcpus = dom.vcpusFlags(libvirt.VIR_DOMAIN_AFFECT_CONFIG)
             self.report_cpu_metric('cpu.total.time', totalcpu, name)
