@@ -194,7 +194,7 @@ propagate = 1
 [handler_rotated_file]
 
 class = handlers.TimedRotatingFileHandler
-level = DEBUG
+level = INFO
 formatter = default
 # rotate at midnight, each day and keep 7 days
 args = ('/var/log/diamond/diamond.log', 'midnight', 1, 7)
