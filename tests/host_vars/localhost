@@ -9,6 +9,7 @@ diamond_custom_collectors:
   - RabbitMQ
   - CephStats
   - Ceph
+  - CPUwithCores
   - LibvirtKVM
   - KSM
   - Httpd
