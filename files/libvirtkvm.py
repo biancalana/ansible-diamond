@@ -194,7 +194,6 @@ as cummulative nanoseconds since VM creation if this is True."""
 
                 except KeyError:
                     host_dom_states[dom_state] = 1
-                self.log.debug('%s -> %s' % (name, dom_state))
 
             # CPU stats
             vcpus = dom.getCPUStats(True, 0)
