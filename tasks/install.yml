@@ -57,7 +57,6 @@
 #
 - name: Install cpu
   copy: src=cpu.py dest={{ diamond_collectors_path }}/cpu/ mode=0644 owner=root
-  when: '"CPUwithCores" in diamond_custom_collectors'
   notify: restart diamond
   tags:
     - diamond
