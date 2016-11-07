@@ -1,4 +1,5 @@
 ---
+diamond_manage_service: False
 whitelist: &whitelist
   - this
   - is
