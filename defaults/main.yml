@@ -1,4 +1,5 @@
 ---
+diamond_manage_service: True
 diamond_conf_dir: "/etc/diamond"
 diamond_collectors_conf_dir: "{{ diamond_conf_dir }}/collectors"
 diamond_collectors_path: "/usr/share/diamond/collectors/"

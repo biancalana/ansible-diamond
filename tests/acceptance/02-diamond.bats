@@ -18,9 +18,10 @@ setup () {
 @test 'check diamond service' {
   run systemctl status diamond
 
-  # FIXME: skip until we can make systemctl run on Docker
+  # FIXME: skip until we can make systemd run on Docker
   assert_output -p 'Failed to get D-Bus connection' || \
-  assert_output -p 'systemctl: command not found'   && \
+  assert_output -p 'systemctl: command not found' || \
+  [[ $diamond_manage_service == 'False' ]] && \
     skip 'systemctl not working in docker'
 
   assert_output 'system statistics collector for graphite'

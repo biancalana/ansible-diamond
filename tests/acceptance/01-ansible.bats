@@ -9,10 +9,6 @@ setup() {
   export INVENTORY=tests/inventory
 }
 
-teardown() {
-  service diamond stop || echo 'no service here'
-}
-
 @test 'playbook syntax' {
   run ansible-playbook-wrapper --syntax-check
   assert_success

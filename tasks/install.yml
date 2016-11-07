@@ -27,11 +27,12 @@
 
 - name: reload systemd
   command: systemctl daemon-reload
-  when: diamond_systemd|changed
+  when: diamond_manage_service and diamond_systemd|changed
   notify: restart diamond
 
 - name: enable diamond service
   service: name=diamond enabled=yes
+  when: diamond_manage_service
   tags:
     - diamond
     - diamond-service
